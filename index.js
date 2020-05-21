@@ -143,17 +143,18 @@ class Lambdasian {
 */
 class Instructor extends Lambdasian {
   constructor(anObject = {}) {
-    super(anObject = {});
+    super(anObject = { "name": anObject.name, "age": anObject.age, "location": anObject.location});
     this.specialty = anObject.specialty;
     this.favLanguage = anObject.favLanguage;
     this.catchPhrase = anObject.catchPhrase;
   }
 
   demo(subject) {
-    
+    this.subject = subject;
+    return `Today we are learning about ${subject}`;
   }
-  grade(student) {
-
+  grade(student = {}, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
@@ -172,8 +173,22 @@ class Instructor extends Lambdasian {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian{
+  constructor(anObject = {}) {
+    super(anObject = {});
+    this.previousBackground = anObject.previousBackground;
+    this.className = anObject.className;
+    this.favSubjects = anObject.favSubjects = [];
+  }
+  listSubject() {
+    return `Loving ${this.favSubjects.toString()}!`
+  }
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge(subject) {
+    return `${this.name} has begun a sprint challenge on ${subject}`;
+  }
 }
 
 /*
