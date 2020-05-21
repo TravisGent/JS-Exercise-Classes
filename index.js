@@ -86,8 +86,21 @@ class Car {
     this.tank += gallons;
   }
   drive(distance) {
-    let tanksUsed = distance / this.milesPerGallon;
-    this.tank -= tanksUsed;
+    let tanksNeeded = distance / this.milesPerGallon; 
+    let leftOverTank = this.tank - tanksNeeded;
+    // this is how many miles you can go MAX considering how many miles you can go per gallon multiplied by how many gallons we have.
+    let distCanTravel = this.milesPerGallon * this.tank;
+
+    // sees if you even have enough gas in the first place
+    if (tanksNeeded <= this.tank) {
+      this.tank = leftOverTank;
+      this.odometer += distance;
+    }
+    else {
+      this.tank = 0;
+      this.odometer += distCanTravel;
+      return `I ran out of fuel at ${this.odometer}`;
+    }
   }
 }
 
@@ -104,7 +117,9 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(name, age, location) {
+    "name"
+  }
 }
 
 /*
